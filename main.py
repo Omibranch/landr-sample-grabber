@@ -13,7 +13,7 @@ PROXY_PASS = ""
 
 DOWNLOAD_DIR = "landr_samples"
 PAGE_LOAD_DELAY = 8000
-SAMPLE_CLICK_DELAY = 0.6
+SAMPLE_CLICK_DELAY = 0.3
 MAX_RETRIES = 3
 RETRY_DELAY = 2.0
 TEST_MODE_2_ONLY = False
@@ -106,10 +106,14 @@ async def scrape_landr():
             manifest = json.load(f)
 
     async with async_playwright() as pw:
-        print(f"[*] Launching browser via proxy: {PROXY_SERVER}")
+        proxy_config = (
+            {"server": PROXY_SERVER, "username": PROXY_USER, "password": PROXY_PASS}
+            if PROXY_SERVER else None
+        )
+        print(f"[*] Launching browser" + (f" via proxy: {PROXY_SERVER}" if proxy_config else " (no proxy)"))
         browser = await pw.chromium.launch(
             headless=False,
-            proxy={"server": PROXY_SERVER, "username": PROXY_USER, "password": PROXY_PASS},
+            **({"proxy": proxy_config} if proxy_config else {}),
         )
         context = await browser.new_context(
             user_agent=(
