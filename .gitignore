@@ -1,0 +1,4 @@
+__pycache__/
+landr_samples/
+samples_metadata.json
+*.pyc
