@@ -7,9 +7,9 @@ from pathlib import Path
 from playwright.async_api import async_playwright
 
 # --- CONFIGURATION ---
-PROXY_SERVER = "http://your-proxy:port"
-PROXY_USER = "username"
-PROXY_PASS = "password"
+PROXY_SERVER = ""
+PROXY_USER = ""
+PROXY_PASS = ""
 
 DOWNLOAD_DIR = "landr_samples"
 PAGE_LOAD_DELAY = 8000
