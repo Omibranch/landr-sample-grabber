@@ -28,25 +28,36 @@ A Playwright-based scraper that automates downloading sample packs from [LANDR S
 ```
 python >= 3.10
 playwright
+python-dotenv
 ```
 
 ```bash
-pip install playwright
+pip install playwright python-dotenv
 playwright install chromium
 ```
 
 ### Configuration
 
-Edit the top of `main.py`:
+Copy `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+```ini
+# .env
+PROXY_SERVER=http://host:port   # leave empty to connect directly
+PROXY_USER=username
+PROXY_PASS=password
+```
+
+Other settings are at the top of `main.py`:
 
 | Variable | Default | Description |
 |---|---|---|
-| `PROXY_SERVER` | `http://...` | Proxy address |
-| `PROXY_USER` | `...` | Proxy username |
-| `PROXY_PASS` | `...` | Proxy password |
 | `DOWNLOAD_DIR` | `landr_samples` | Output folder |
 | `PAGE_LOAD_DELAY` | `8000` | Wait after page load (ms) |
-| `SAMPLE_CLICK_DELAY` | `0.6` | Pause between clicks (s) |
+| `SAMPLE_CLICK_DELAY` | `0.3` | Pause between clicks (s) |
 | `MAX_RETRIES` | `3` | Retry attempts |
 | `TEST_MODE_2_ONLY` | `False` | Download only 2 files (debug) |
 
@@ -83,25 +94,36 @@ Files are saved to `landr_samples/`. A `_manifest.json` is written alongside the
 ```
 python >= 3.10
 playwright
+python-dotenv
 ```
 
 ```bash
-pip install playwright
+pip install playwright python-dotenv
 playwright install chromium
 ```
 
 ### Настройка
 
-Правь переменные в начале `main.py`:
+Скопируй `.env.example` в `.env` и заполни:
+
+```bash
+cp .env.example .env
+```
+
+```ini
+# .env
+PROXY_SERVER=http://host:port   # оставь пустым для прямого подключения
+PROXY_USER=username
+PROXY_PASS=password
+```
+
+Остальные настройки — в начале `main.py`:
 
 | Переменная | По умолчанию | Описание |
 |---|---|---|
-| `PROXY_SERVER` | `http://...` | Адрес прокси |
-| `PROXY_USER` | `...` | Логин прокси |
-| `PROXY_PASS` | `...` | Пароль прокси |
 | `DOWNLOAD_DIR` | `landr_samples` | Папка для файлов |
 | `PAGE_LOAD_DELAY` | `8000` | Ожидание загрузки страницы (мс) |
-| `SAMPLE_CLICK_DELAY` | `0.6` | Пауза между кликами (с) |
+| `SAMPLE_CLICK_DELAY` | `0.3` | Пауза между кликами (с) |
 | `MAX_RETRIES` | `3` | Попыток при ошибке |
 | `TEST_MODE_2_ONLY` | `False` | Скачать только 2 файла (отладка) |
 

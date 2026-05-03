@@ -5,11 +5,14 @@ import json
 import time
 from pathlib import Path
 from playwright.async_api import async_playwright
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- CONFIGURATION ---
-PROXY_SERVER = ""
-PROXY_USER = ""
-PROXY_PASS = ""
+PROXY_SERVER = os.getenv("PROXY_SERVER", "")
+PROXY_USER   = os.getenv("PROXY_USER", "")
+PROXY_PASS   = os.getenv("PROXY_PASS", "")
 
 DOWNLOAD_DIR = "landr_samples"
 PAGE_LOAD_DELAY = 8000
